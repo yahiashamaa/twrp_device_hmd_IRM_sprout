@@ -26,7 +26,7 @@ jobs:
           mkdir -p ~/twrp
           cd ~/twrp
           ~/repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 --depth=1
-          ~/repo sync -j$((nproc)/2) -c --no-clone-bundle
+          ~/repo sync -j$((nproc)/2) 
 
       - name: 📂 Clone Device Tree
         run: |
