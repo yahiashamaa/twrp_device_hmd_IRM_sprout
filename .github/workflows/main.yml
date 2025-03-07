@@ -19,15 +19,14 @@ jobs:
         run: |
          wget -o ~/repo https://storage.googleapis.com/git-repo-downloads/repo   
          chmod +x ~/repo
-         mv ~/repo ~/.local/bin/repo
 
       
       - name: 🔄 Sync TWRP Sources
         run: |
           mkdir -p ~/twrp
           cd ~/twrp
-          ~/.local/bin/repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 --depth=1
-          ~/.local/bin/repo sync -j$(nproc) --force-sync
+          ~/repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 --depth=1
+          ~/repo sync -j$(nproc)
 
       - name: 📂 Clone Device Tree
         run: |
