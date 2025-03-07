@@ -12,15 +12,22 @@ jobs:
     steps:
       - name: 🛠️ Install Dependencies
         run: |
-          sudo apt update
-          sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32z1-dev libelf-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libtinfo5 libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev openjdk-8-jdk python-is-python3 repo
+          sudo apt updatesudo apt update
+          sudo apt install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick libncurses-dev lib32z1-dev libelf-dev liblz4-tool libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev openjdk-8-jdk python-is-python3
 
+      - name: 🔄 Get repo
+        run: |
+         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/repo
+         chmod +x ~/repo
+         mv ~/repo ~/.local/bin/repo
+
+      
       - name: 🔄 Sync TWRP Sources
         run: |
           mkdir -p ~/twrp
           cd ~/twrp
-          repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 --depth=1
-          repo sync -j$(nproc) --force-sync
+          ~/.local/bin/repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11 --depth=1
+          ~/.local/bin/repo sync -j$(nproc) --force-sync
 
       - name: 📂 Clone Device Tree
         run: |
