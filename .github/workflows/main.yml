@@ -17,7 +17,7 @@ jobs:
 
       - name: 🔄 Get repo
         run: |
-         wget -o ~/repo https://storage.googleapis.com/git-repo-downloads/repo   
+         curl -o- https://storage.googleapis.com/git-repo-downloads/repo > ~/repo  
          chmod +x ~/repo
 
       
