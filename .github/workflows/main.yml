@@ -18,8 +18,8 @@ jobs:
       - name: 🔄 Get repo
         run: |
          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/repo
-         chmod +x ~/repo
-         mv ~/repo ~/.local/bin/repo
+         chmod +x ~/repo.1
+         mv ~/repo.1 ~/.local/bin/repo
 
       
       - name: 🔄 Sync TWRP Sources
